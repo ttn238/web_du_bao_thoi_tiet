@@ -1,3 +1,268 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
 body {
-  
+  background-color: #f4f6f8;
+  color: #222;
+  display: flex;
+  min-height: 100vh;
+}
+
+.app {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 280px;
+  height: 100%;
+  background-color: #0e7e62;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar h1 {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+  color: white;
+}
+
+.sidebar .subtitle {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+.logo {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+.search {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.search input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.search button {
+  background-color: #cecccb;
+  border: none;
+  border-radius: 6px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+
+.search button:hover {
+  background-color: #0e8d6f;
+}
+
+.unit-row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #e5e7eb;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-ghost:hover {
+  background-color: #374151;
+}
+
+.cities {
+  margin-top: 20px;
+  flex: 1;
+  overflow-y: auto;
+  font-size: 0.95rem;
+}
+
+.cities div {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  background-color: #273244;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cities div:hover {
+  background-color: #374151;
+}
+
+.sidebar-bottom {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.main {
+  margin-left: 280px;
+  padding: 30px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.aqi-badge {
+  background-color: #10a37f;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.last-action {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.current-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.city-and-time h2 {
+  font-size: 1.8rem;
+  color: #111827;
+}
+
+.updated {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.desc {
+  margin-top: 6px;
+  font-style: italic;
+  color: #374151;
+}
+
+.main-temp-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.temp {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.feels {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px 20px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-item .label {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.meta-item .value {
+  font-weight: 600;
+}
+
+.weather-icon {
+  font-size: 4rem;
+}
+
+.forecast h3 {
+  margin-bottom: 10px;
+}
+
+.forecast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.forecast-list .day {
+  text-align: center;
+  padding: 10px;
+  background-color: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.chart {
+  padding: 20px;
+}
+
+.chart-head h4 {
+  margin-bottom: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 10px;
 }
