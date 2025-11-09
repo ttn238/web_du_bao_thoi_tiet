@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Giới thiệu thành viên - Thời tiết VN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      max-width: 900px;
+      width: 100%;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: #f0f0f0;
+      border: none;
+      border-radius: 8px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 30px;
+    }
+
+    .back-btn:hover {
+      background: #e0e0e0;
+      transform: translateX(-4px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    thead {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    thead th {
+      color: white;
+      padding: 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s;
+    }
+
+    tbody tr:hover {
+      background: #f8f9ff;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 16px;
+      color: #333;
+      font-size: 15px;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    tbody td:nth-child(2) {
+      color: #666;
+      font-family: 'Courier New', monospace;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      color: #999;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 24px;
+      }
+
+      .header h1 {
+        font-size: 24px;
+      }
+
+      table {
+        font-size: 14px;
+      }
+
+      thead th,
+      tbody td {
+        padding: 12px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">
+      ← Quay lại trang chính
+    </a>
+
+    <div class="header">
+      <h1>Giới thiệu thành viên</h1>
+      <p>Bài Tập Lớn: Ứng dụng Dự báo Thời tiết Việt Nam</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Họ và Tên</th>
+          <th>MSSV</th>
+          <th>Nhiệm vụ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Huỳnh Gia Bảo</td>
+          <td>6551071007</td>
+          <td>JavaScript - Báo cáo - Thuyết trình</td>
+        </tr>
+        <tr>
+          <td>Lê Quang Chí</td>
+          <td>6551071010</td>
+          <td>JavaScript - Báo cáo</td>
+        </tr>
+        <tr>
+          <td>Nguyễn Ngọc Ngà</td>
+          <td>6551071056</td>
+          <td>HTML - Báo cáo</td>
+        </tr>
+        <tr>
+          <td>Trần Thảo Nương</td>
+          <td>6551071060</td>
+          <td>CSS - Báo cáo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      © 2025 Thời tiết VN — Môn Thiết Kế Web
+    </div>
+  </div>
+</body>
+</html>
