@@ -16,11 +16,8 @@ function renderTemperatureChart(dailyData) {
   const tempsMin = dailyData.map((item) => Math.round(item.main.temp_min));
   const tempsMax = dailyData.map((item) => Math.round(item.main.temp_max));
 
-  const ctx = document.getElementById("tempChart").getContext("2d");
-
   const canvas = document.getElementById("tempChart");
   if (!canvas) return;
-
   const ctx = canvas.getContext("2d");
   // Hủy chart cũ nếu tồn tại
   if (tempChart) tempChart.destroy();
