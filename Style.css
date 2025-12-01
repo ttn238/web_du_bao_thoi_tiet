@@ -71,58 +71,6 @@ main.main.weather-mist {
   opacity: 0.9;
 }
 
-
-//Tạo danh sách tên tỉnh để dễ nhấn chọn
-const cities = [
-    "Hà Nội",
-    "Thành phố Hồ Chí Minh",
-    "Đà Nẵng",
-    "Thanh Hóa",
-    "Cần Thơ",
-    "Huế",
-    "Nha Trang",
-    "Vinh",
-    "Buôn Ma Thuột",
-    "Phan Thiết",
-    "Bình Định",
-    "Long An",
-    "Cà Mau"
-];
-
-function renderCities() {
-    const box = document.querySelector(".cities");
-    if (!box) return;
-
-    box.innerHTML = "";
-
-    cities.forEach(city => {
-        const el = document.createElement("div");
-        el.className = "c";
-        el.textContent = city;
-
-        el.addEventListener("click", () => {
-            updateWeatherFromSidebar(city);
-        });
-
-        box.appendChild(el);
-    });
-}
-
-renderCities();
-
-function updateWeatherFromSidebar(cityName) {
-    console.log("Đang load:", cityName);
-
-    if (typeof fetchAndUpdateWeather === "function") {
-        fetchAndUpdateWeather(cityName);
-    }
-
-    if (typeof fetchForecast === "function") {
-        fetchForecast(cityName);
-    }
-}
-
-
 .search {
   display: flex;
   margin-top: 14px;
@@ -209,6 +157,36 @@ function updateWeatherFromSidebar(cityName) {
 }
 .cities .c:hover {
   background: rgba(255, 255, 255, 0.12);
+}
+
+/* Tăng độ nổi bật cho nút thành phố */
+.cities .city-item {
+  background: rgba(0, 0, 0, 0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  font-weight: 700;
+  padding: 8px 12px;
+  min-width: 90px;
+  text-align: center;
+  transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.cities .city-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.cities .city-item:focus {
+  outline: 2px solid rgba(255,255,255,0.12);
+  outline-offset: 2px;
+}
+
+.cities .city-item.active {
+  background: #fff; /* nổi bật với nền trắng */
+  color: #064b00; /* chữ xanh đậm để tương phản */
+  border-color: rgba(255,255,255,0.9);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transform: translateY(-1px) scale(1.01);
 }
 
 .sidebar small {
@@ -350,4 +328,15 @@ footer {
   position: relative;
   height: 320px; /* Tăng giảm tùy ý */
   padding: 10px 0;
+}
+
+.chart-body canvas,
+#tempChart {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 880px) {
+  .chart-body { height: 240px; }
 }
