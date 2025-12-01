@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dự Báo Thời tiết</title>
 
@@ -10,11 +10,13 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <link rel="stylesheet" href="Style.css">
+
 </head>
 <body>
   <div class="app">
     <aside class="sidebar" aria-label="Danh sách tỉnh thành">
       <div class="sidebar-top">
+        
         <div class="brand">
           <div class="logo">☼</div>
           <div>
@@ -35,7 +37,9 @@
         </div>
       </div>
 
-      <div id="citiesList" class="cities" role="list" aria-label="Danh sách tỉnh thành"></div>
+      <div id="citiesList" class="cities" 
+        role="list" aria-label="Danh sách tỉnh thành">
+      </div>
 
       <div class="sidebar-bottom">
         <small>Click một tỉnh để xem chi tiết.</small>
@@ -43,7 +47,83 @@
         <button class="btn-intro">Giới thiệu thành viên</button>
         </a>
       </div>
-    </asiScript.js"></script>
+    </aside>
+
+    <main class="main">
+      <header class="main-header">
+
+        <div id="aqiBox" class="aqi-badge">AQI — --</div>
+        <div id="lastAction" class="last-action">Sẵn sàng</div>
+      
+      </header>
+
+      <section id="currentCard" class="card current-card">
+        <div class="left">
+
+          <div class="city-and-time">
+            <h2 id="cityName">—</h2>
+            <div id="updated" class="updated">—</div>
+          </div>
+          <div id="desc" class="desc">—</div>
+
+          <div class="main-temp-row">
+
+            <div class="temp-wrap">
+              <div id="temp" class="temp">--°</div>
+              <div id="feels" class="feels">Feels: --</div>
+            </div>
+
+            <div class="meta-grid">
+              <div class="meta-item">
+                <span class="label">Độ ẩm:</span>
+                <span id="humidity" class="value">--%</span>
+              </div>
+
+              <div class="meta-item">
+                <span class="label">Gió:</span>
+                <span id="wind" class="value">-- m/s</span>
+              </div>
+
+              <div class="meta-item">
+                <span class="label">Trạng thái:</span>
+                <span id="status" class="value">--</span>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+
+        <div class="right">
+          <div id="icon" class="weather-icon">☀️</div>
+        </div>
+      </section>
+
+      <section class="forecast card">
+        <h3>Dự báo 5 ngày</h3>
+
+        <div id="forecast" class="forecast-list"></div>
+      
+      </section>
+
+      <section class="chart card">
+        <div class="chart-head">
+          <h4>Biểu đồ nhiệt độ (5 ngày)</h4>
+        </div>
+        <div class="chart-body">
+          <canvas id="tempChart" height="140"></canvas>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>© 2025 — Thời tiết VN</div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="Chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="Script.js"></script>
 
 </body>
 </html>
