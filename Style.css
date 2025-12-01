@@ -32,23 +32,23 @@ body {
   color: #eeeded;
 }
 
-.weather-sunny {
+main.main.weather-sunny {
   background-image: url("https://tse1.mm.bing.net/th/id/OIP.MJVwk9rxxEi0duq2uoJ0ggAAAA?cb=ucfimg2ucfimg=1&w=350&h=197&rs=1&pid=ImgDetMain&o=7&rm=3");
 }
 
-.weather-rain {
+main.main.weather-rain {
   background-image: url("https://tse2.mm.bing.net/th/id/OIP._yQBYfqjcN-VM5aME5K3HAHaEK?cb=ucfimg2ucfimg=1&w=1920&h=1080&rs=1&pid=ImgDetMain&o=7&rm=3");
 }
 
-.weather-cloud {
+main.main.weather-cloud {
   background-image: url("https://img4.thuthuatphanmem.vn/uploads/2020/03/16/may-troi-tam-toi-rat-dep_111709537.jpg");
 }
 
-.weather-snow {
+main.main.weather-snow {
   background-image: url("https://watermark.lovepik.com/photo/50110/6464.jpg_wh1200.jpg");
 }
 
-.weather-mist {
+main.main.weather-mist {
   background-image: url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1400&q=80");
 }
 

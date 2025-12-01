@@ -112,7 +112,45 @@ function normalizeCityInput(userInput) {
 
   return userInput;
 }
+// Đổi màu nền
+function updateWeatherBackground(weatherText) {
+  const mainEl = document.querySelector("main.main");
+  if (!mainEl) return;
 
+  // Xóa class cũ
+  mainEl.classList.remove(
+    "weather-sunny",
+    "weather-rain",
+    "weather-cloud",
+    "weather-snow",
+    "weather-mist"
+  );
+
+  // Chuyển tiếng Việt -> không dấu
+  const t = weatherText
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  if (t.includes("nang") || t.includes("clear")) {
+    mainEl.classList.add("weather-sunny");
+  } else if (t.includes("mua") || t.includes("rain")) {
+    mainEl.classList.add("weather-rain");
+  } else if (t.includes("may") || t.includes("cloud")) {
+    mainEl.classList.add("weather-cloud");
+  } else if (t.includes("tuyet") || t.includes("snow")) {
+    mainEl.classList.add("weather-snow");
+  } else if (
+    t.includes("suong") ||
+    t.includes("mist") ||
+    t.includes("fog") ||
+    t.includes("haze")
+  ) {
+    mainEl.classList.add("weather-mist");
+  } else {
+    mainEl.classList.add("weather-sunny"); // fallback an toàn
+  }
+}
 // 🌦️ Hàm gọi OpenWeatherMap API (PHIÊN BẢN SỬA LỖI HOÀN CHỈNH)
 function fetchAndUpdateWeather(city) {
   const normalizedCity = normalizeCityInput(city); // ✅ Chuẩn hóa
@@ -150,6 +188,7 @@ function fetchAndUpdateWeather(city) {
       const humidity = data.main.humidity;
       const windSpeed = data.wind.speed.toFixed(1);
       const conditionText = data.weather[0].description;
+      updateWeatherBackground(conditionText);
       const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
       const feelStatus = getFeelStatus(feelsLikeTemp); // --- Cập nhật giao diện ---
 
