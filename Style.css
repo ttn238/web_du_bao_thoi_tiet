@@ -71,6 +71,58 @@ main.main.weather-mist {
   opacity: 0.9;
 }
 
+
+//Tạo danh sách tên tỉnh để dễ nhấn chọn
+const cities = [
+    "Hà Nội",
+    "Thành phố Hồ Chí Minh",
+    "Đà Nẵng",
+    "Thanh Hóa",
+    "Cần Thơ",
+    "Huế",
+    "Nha Trang",
+    "Vinh",
+    "Buôn Ma Thuột",
+    "Phan Thiết",
+    "Bình Định",
+    "Long An",
+    "Cà Mau"
+];
+
+function renderCities() {
+    const box = document.querySelector(".cities");
+    if (!box) return;
+
+    box.innerHTML = "";
+
+    cities.forEach(city => {
+        const el = document.createElement("div");
+        el.className = "c";
+        el.textContent = city;
+
+        el.addEventListener("click", () => {
+            updateWeatherFromSidebar(city);
+        });
+
+        box.appendChild(el);
+    });
+}
+
+renderCities();
+
+function updateWeatherFromSidebar(cityName) {
+    console.log("Đang load:", cityName);
+
+    if (typeof fetchAndUpdateWeather === "function") {
+        fetchAndUpdateWeather(cityName);
+    }
+
+    if (typeof fetchForecast === "function") {
+        fetchForecast(cityName);
+    }
+}
+
+
 .search {
   display: flex;
   margin-top: 14px;
