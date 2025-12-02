@@ -70,6 +70,56 @@ const VN_CITY_NAME_MAP = {
   "Yen Bai": "Yên Bái",
 };
 
+//Tạo danh sách tên tỉnh để dễ nhấn chọn
+const cities = [
+    "Hà Nội",
+    "Thành phố Hồ Chí Minh",
+    "Đà Nẵng",
+    "Thanh Hóa",
+    "Cần Thơ",
+    "Huế",
+    "Nha Trang",
+    "Vinh",
+    "Buôn Ma Thuột",
+    "Phan Thiết",
+    "Bình Định",
+    "Long An",
+    "Cà Mau"
+];
+
+function renderCities() {
+    const box = document.querySelector(".cities");
+    if (!box) return;
+
+    box.innerHTML = "";
+
+    cities.forEach(city => {
+        const el = document.createElement("div");
+        el.className = "c";
+        el.textContent = city;
+
+        el.addEventListener("click", () => {
+            updateWeatherFromSidebar(city);
+        });
+
+        box.appendChild(el);
+    });
+}
+
+renderCities();
+
+function updateWeatherFromSidebar(cityName) {
+    console.log("Đang load:", cityName);
+
+    if (typeof fetchAndUpdateWeather === "function") {
+        fetchAndUpdateWeather(cityName);
+    }
+
+    if (typeof fetchForecast === "function") {
+        fetchForecast(cityName);
+    }
+}
+
 // 🌡️ Hàm mô tả cảm giác nhiệt độ
 function getFeelStatus(feelsLikeC) {
   if (feelsLikeC >= 35) return "Rất Nóng (Khó Chịu)";
