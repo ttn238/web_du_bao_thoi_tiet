@@ -481,3 +481,18 @@ $(document).ready(function () {
     }
   );
 });
+//add de chay dt
+const sidebar = document.querySelector(".sidebar");
+const main = document.querySelector(".main");
+const btnMenu = document.querySelector(".mobile-menu-btn");
+
+btnMenu.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+  main.classList.toggle("dimmed");
+});
+document.querySelectorAll(".cities .city-item").forEach(item => {
+  item.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    main.classList.remove("dimmed");
+  });
+});
