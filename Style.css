@@ -340,3 +340,96 @@ footer {
 @media (max-width: 880px) {
   .chart-body { height: 240px; }
 }
+
+/* để nó chạy trên đt*/
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden; 
+  }
+  .app {
+    flex-direction: column;
+    height: auto;              
+  }
+  .sidebar {
+    width: 100%;
+    min-width: 100%;        
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+  main.main {
+    padding: 10px;
+    min-width: 100%;
+  }
+  .meta-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #forecast {
+    flex-wrap: wrap;   
+    justify-content: center;
+  }
+  .forecast-item {
+    min-width: 90px;
+    flex: 1 1 45%;    
+  }
+  .forecast-list {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px;
+  }
+  .weather-icon img {
+    width: 60px;
+    height: 60px;
+  }
+  .temp {
+    font-size: 42px;
+  }
+  .city-and-time h2 {
+    font-size: 20px;
+  }
+  .cities .city-item {
+    min-width: 70px;
+    padding: 6px 10px;
+  }
+  .chart-body {
+    height: 200px;
+  }
+}
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  padding: 10px 14px;
+  background: #064c00;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;   
+    width: 260px;
+    height: 100%;
+    background: rgb(6, 76, 3);
+    padding: 18px;
+    z-index: 9998;
+    transition: 0.35s ease;
+  }
+  .sidebar.open {
+    left: 0;        
+  }
+  .main.dimmed {
+    filter: brightness(0.4);
+    pointer-events: none;
+  }
+}
