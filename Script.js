@@ -95,7 +95,7 @@ function renderCities() {
 
     cities.forEach(city => {
         const el = document.createElement("div");
-        el.className = "c";
+        el.className = "city-item";
         el.textContent = city;
 
         el.addEventListener("click", () => {
@@ -117,6 +117,14 @@ function updateWeatherFromSidebar(cityName) {
 
     if (typeof fetchForecast === "function") {
         fetchForecast(cityName);
+    }
+
+    // Đóng sidebar trên mobile sau khi chọn thành phố
+    const sidebar = document.querySelector(".sidebar");
+    const main = document.querySelector(".main");
+    if (sidebar && main) {
+        sidebar.classList.remove("open");
+        main.classList.remove("dimmed");
     }
 }
 
@@ -303,7 +311,15 @@ document.getElementById("locateBtn").addEventListener("click", () => {
 document.getElementById("searchInput").addEventListener("keyup", (e) => {
   if (e.key === "Enter") {
     const city = e.target.value.trim();
-    if (city) fetchAndUpdateWeather(city);
+    if (city) {
+      fetchAndUpdateWeather(city);
+      document.getElementById("searchInput").value = "";
+      // Đóng sidebar trên mobile sau khi nhập tìm kiếm
+      const sidebar = document.querySelector(".sidebar");
+      const main = document.querySelector(".main");
+      sidebar.classList.remove("open");
+      main.classList.remove("dimmed");
+    }
   }
 });
 
@@ -315,9 +331,7 @@ document.getElementById("refreshBtn").addEventListener("click", () => {
   lastActionElement.textContent = `Đang làm mới dữ liệu cho ${currentCityName}...`; // Gọi API bằng tên tiếng Anh (không dấu) đã lưu
   fetchAndUpdateWeather(lastSuccessfulCity);
 });
-// ================================
-// ⭐ DỰ BÁO NGẮN HẠN 3–7 NGÀY ⭐
-// ================================
+
 function fetchForecast(city) {
   const normalizedCity = normalizeCityInput(city);
 
@@ -381,9 +395,6 @@ fetchAndUpdateWeather = function (city) {
 };
 
 $(document).ready(function () {
-  // -----------------------------
-  // Task 1: Thao tác DOM
-  // -----------------------------
 
   // 1. Ẩn/hiện bảng danh sách thành phố khi click
   $(".sidebar-top .brand").click(function () {
@@ -430,9 +441,7 @@ $(document).ready(function () {
     );
   });
 
-  // -----------------------------
-  // Task 2: Hiệu ứng mượt mà
-  // -----------------------------
+
 
   // 1. Loading spinner khi refresh
   function showSpinner() {
@@ -463,8 +472,7 @@ $(document).ready(function () {
     $("#desc").text(msg).fadeIn(300).delay(2000).fadeOut(300);
   }
 
-  // Ví dụ: thử hiển thị lỗi
-  // showError("Không tìm thấy thành phố!");
+  
 
   // 4. Slide effect cho dự báo 7 ngày
   $(".forecast h3").click(function () {
@@ -490,9 +498,19 @@ btnMenu.addEventListener("click", () => {
   sidebar.classList.toggle("open");
   main.classList.toggle("dimmed");
 });
+
+// Click vào main area  để đóng sidebar
+main.addEventListener("click", () => {
+  if (main.classList.contains("dimmed")) {
+    sidebar.classList.remove("open");
+    main.classList.remove("dimmed");
+  }
+});
+
 document.querySelectorAll(".cities .city-item").forEach(item => {
   item.addEventListener("click", () => {
     sidebar.classList.remove("open");
     main.classList.remove("dimmed");
   });
 });
+
