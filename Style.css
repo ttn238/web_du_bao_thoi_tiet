@@ -15,19 +15,14 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .app {
   display: flex;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   box-shadow: 0 10px 40px rgba(2, 6, 23, 0.15);
   width: 100%;
-  min-height: 100vh;
-  height: auto;
+  height: 150vh;
 }
 
 .sidebar {
@@ -38,23 +33,23 @@ body {
 }
 
 main.main.weather-sunny {
-  background-image: url("Images/nang1.jpg");
+  background-image: url("https://tse1.mm.bing.net/th/id/OIP.MJVwk9rxxEi0duq2uoJ0ggAAAA?cb=ucfimg2ucfimg=1&w=350&h=197&rs=1&pid=ImgDetMain&o=7&rm=3");
 }
 
 main.main.weather-rain {
-  background-image: url("Images/mua.jpg");
+  background-image: url("https://tse2.mm.bing.net/th/id/OIP._yQBYfqjcN-VM5aME5K3HAHaEK?cb=ucfimg2ucfimg=1&w=1920&h=1080&rs=1&pid=ImgDetMain&o=7&rm=3");
 }
 
 main.main.weather-cloud {
-  background-image: url("Images/maytroi.jpg");
+  background-image: url("https://img4.thuthuatphanmem.vn/uploads/2020/03/16/may-troi-tam-toi-rat-dep_111709537.jpg");
 }
 
 main.main.weather-snow {
-  background-image: url("Images/tuyet.webp");
+  background-image: url("https://watermark.lovepik.com/photo/50110/6464.jpg_wh1200.jpg");
 }
 
 main.main.weather-mist {
-  background-image: url("Images/suongmu.webp");
+  background-image: url("https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=1400&q=80");
 }
 
 .main.main {
@@ -148,11 +143,23 @@ main.main.weather-mist {
 
 .cities {
   margin-top: 12px;
-  height: calc(100vh - 280px);
+  height: calc(100vh - 260px);
   overflow-y: auto;
   scrollbar-width: thin;
 }
+.cities .c {
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 0.3s;
+}
+.cities .c:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
 
+/* Tăng độ nổi bật cho nút thành phố */
 .cities .city-item {
   background: rgba(0, 0, 0, 0.12);
   color: #fff;
@@ -175,8 +182,8 @@ main.main.weather-mist {
 }
 
 .cities .city-item.active {
-  background: #fff; 
-  color: #064b00; 
+  background: #fff; /* nổi bật với nền trắng */
+  color: #064b00; /* chữ xanh đậm để tương phản */
   border-color: rgba(255,255,255,0.9);
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
   transform: translateY(-1px) scale(1.01);
@@ -194,9 +201,6 @@ main.main {
   background-size: cover;
   background-position: center;
   transition: background-image 0.8s ease;
-  width: 100%;
-  min-height: auto;
-  height: auto;
 }
 
 .main-header {
@@ -283,43 +287,37 @@ footer {
   font-size: 13px;
 }
 
-@media (min-width: 769px) {
-  .mobile-menu-btn {
-    display: none;
-  }
-}
-
 @media (max-width: 880px) {
   .app {
     flex-direction: column;
-    margin: 0;
-    height: auto;
+    margin: 12px;
   }
   .sidebar {
     width: 100%;
-    padding: 12px;
-    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
   }
   main.main {
     padding: 12px;
-    height: auto;
   }
 }
 #forecast {
   display: flex;
-  justify-content: space-between; 
-  gap: 10px; 
-  flex-wrap: nowrap; 
+  justify-content: space-between; /* trải đều các item */
+  gap: 10px; /* khoảng cách giữa các ô */
+  flex-wrap: nowrap; /* không xuống dòng */
   padding: 10px;
 }
 
 .forecast-item {
-  flex: 1 1 0; 
+  flex: 1 1 0; /* mỗi item chiếm đều phần trăm */
   text-align: center;
   background: #f5f5f5;
   border-radius: 8px;
   padding: 10px;
-  min-width: 100px; 
+  min-width: 100px; /* để item không quá nhỏ */
 }
 
 .forecast-item img.f-icon {
@@ -328,7 +326,7 @@ footer {
 }
 .chart-body {
   position: relative;
-  height: 320px; 
+  height: 320px; /* Tăng giảm tùy ý */
   padding: 10px 0;
 }
 
@@ -343,94 +341,77 @@ footer {
   .chart-body { height: 240px; }
 }
 
-/*cho chạy trên điện thoại*/
-@media (max-width: 768px) {
-  body {
-    overflow-x: hidden; 
-  }
+/* để nó chạy trên đt*/
+/* ============================
+   Tablet (<880px)
+   ============================ */
+@media (max-width: 880px) {
   .app {
     flex-direction: column;
-    height: auto;              
+    height: auto;
   }
+
+  main.main {
+    padding: 12px;
+  }
+}
+
+/* ============================
+   Mobile (<768px)
+   ============================ */
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Nút menu */
   .mobile-menu-btn {
     display: block;
   }
+
+  /* Sidebar dạng menu trượt */
   .sidebar {
     position: fixed;
     top: 0;
-    left: -280px;   
-    width: 260px;
+    left: -260px;
+    width: 260px !important;
     height: 100vh;
     background: rgb(6, 76, 3);
     padding: 18px;
     z-index: 9998;
-    transition: 0.35s ease;
-    overflow-y: auto;
+    transition: left 0.35s ease;
+    flex-direction: column !important;
+    display: block !important;
   }
+
   .sidebar.open {
-    left: 0;        
+    left: 0;
   }
-  .cities {
-    height: auto;
-    max-height: none;
-  }
-  main.main {
-    padding: 10px;
-    min-width: 100%;
-    height: auto;
-  }
-  main.main.dimmed {
+
+  /* làm mờ nền khi mở menu */
+  .main.dimmed {
     filter: brightness(0.4);
     pointer-events: none;
   }
-  .meta-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
+  /* Forecast */
   #forecast {
-    flex-wrap: wrap;   
+    flex-wrap: wrap;
     justify-content: center;
   }
+
   .forecast-item {
     min-width: 90px;
-    flex: 1 1 45%;    
+    flex: 1 1 45%;
   }
-  .forecast-list {
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 12px;
-  }
+
   .weather-icon img {
     width: 60px;
     height: 60px;
   }
+
   .temp {
     font-size: 42px;
   }
-  .city-and-time h2 {
-    font-size: 20px;
-  }
-  .cities .city-item {
-    min-width: 70px;
-    padding: 6px 10px;
-  }
-  .chart-body {
-    height: 200px;
-  }
-  .mobile-menu-btn {
-    display: block;
-  }
-}
-
-.mobile-menu-btn {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  z-index: 9999;
-  padding: 10px 14px;
-  background: #064c00;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
 }
