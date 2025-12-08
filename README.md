@@ -32,9 +32,9 @@ Website dự báo thời tiết theo thời gian thực, hỗ trợ tìm kiếm 
 
 ## 🛠️ Công nghệ sử dụng
 
-- **HTML5**: Cấu trúc trang web
-- **CSS3**: Styling và animation
-- **JavaScript (ES6+)**: Logic xử lý
+- **HTML**: Cấu trúc trang web
+- **CSS**: Styling và animation
+- **JavaScript**: Logic xử lý
 - **Chart.js**: Vẽ biểu đồ thống kê
 - **Weather API**: Lấy dữ liệu thời tiết real-time
   - OpenWeatherMap API
@@ -85,7 +85,7 @@ const API_KEY = 'YOUR_API_KEY_HERE';
 
 ## 📱 Hướng dẫn sử dụng
 
-1. **Mở Link**: Mở web dự báo thời tiết lên bằng Link:[đã đăng ký theo tên miền](https://thoitietvn.infinityfreeapp.com/)
+1. **Mở Link**: Mở web dự báo thời tiết lên bằng Link: [Dự báo thời tiết](https://thoitietvn.infinityfreeapp.com/)
 1. **Tìm kiếm thành phố**: Nhập tên thành phố vào ô tìm kiếm và nhấn Enter hoặc là ấn vào ô có tên thành phố ở thanh bên trái
 2. **Xem chi tiết**: Thông tin thời tiết hiển thị ngay lập tức
 3. **Xem biểu đồ**: Kéo xuống để xem dự báo chi tiết theo giờ và theo ngày
