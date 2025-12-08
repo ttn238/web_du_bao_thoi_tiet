@@ -53,7 +53,7 @@ web_du_bao_thoi_tiet/
 ├── README.md           # Tài liệu dự án
 │
 └── images/             # Thư mục chứa hình ảnh
-    └── backgrounds/    # Ảnh nền
+    └── ...             # Ảnh nền
 ```
 
 ## 🚀 Cài đặt và sử dụng
