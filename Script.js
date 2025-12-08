@@ -84,7 +84,14 @@ const cities = [
     "Phan Thiết",
     "Bình Định",
     "Long An",
-    "Cà Mau"
+    "Nam Định",
+    "Hà Tĩnh",
+    "Thái Nguyên",
+    "Lâm Đồng",
+    "Bắc Ninh",
+    "An Giang",
+    "Bến Tre",
+    "Cà Mau
 ];
 
 function renderCities() {
@@ -248,6 +255,8 @@ function fetchAndUpdateWeather(city) {
       const conditionText = data.weather[0].description;
       updateWeatherBackground(conditionText);
       const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+      // Gọi AQI bằng tọa độ thành phố
+      fetchAQI(data.coord.lat, data.coord.lon);
       const feelStatus = getFeelStatus(feelsLikeTemp); // --- Cập nhật giao diện ---
 
       document.getElementById("cityName").textContent = cityName;
@@ -296,6 +305,38 @@ function fetchAndUpdateWeather(city) {
         lastActionElement.textContent = "Lỗi: Không tải được dữ liệu!";
         descElement.textContent = "Không thể kết nối. Vui lòng kiểm tra mạng.";
       }
+    });
+}
+
+// =========================
+//  TÍNH TOÁN VÀ HIỂN THỊ AQI
+//  Chuyển AQI số → mức độ
+function getAqiStatus(aqi) {
+  switch (aqi) {
+    case 1: return "Tốt";
+    case 2: return "Trung bình";
+    case 3: return "Kém";
+    case 4: return "Xấu";
+    case 5: return "Rất xấu";
+    default: return "Không xác định";
+  }
+}
+//  Hàm gọi API AQI từ OpenWeatherMap
+function fetchAQI(lat, lon) {
+  const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const aqi = data.list[0].main.aqi;
+      const status = getAqiStatus(aqi);
+
+      // Cập nhật vào hộp AQI
+      document.getElementById("aqiBox").textContent = `AQI — ${aqi} (${status})`;
+    })
+    .catch(err => {
+      console.error("❌ AQI API error:", err);
+      document.getElementById("aqiBox").textContent = "AQI — --";
     });
 }
 
@@ -493,6 +534,7 @@ $(document).ready(function () {
 const sidebar = document.querySelector(".sidebar");
 const main = document.querySelector(".main");
 const btnMenu = document.querySelector(".mobile-menu-btn");
+const locateBtn = document.getElementById("locateBtn");
 
 btnMenu.addEventListener("click", () => {
   sidebar.classList.toggle("open");
@@ -514,3 +556,15 @@ document.querySelectorAll(".cities .city-item").forEach(item => {
   });
 });
 
+locateBtn.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  main.classList.remove("dimmed");
+  
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    searchInput.value = "";   
+  }
+  if (typeof resetSearch === "function") {
+    resetSearch();
+  }
+});
