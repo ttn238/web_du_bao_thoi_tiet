@@ -114,7 +114,6 @@ const API_KEY = 'YOUR_API_KEY_HERE';
 ---
 
 ## 🧩 Định Hướng Phát Triển Web
-Những mục nâng cấp để website m “xịn” như sản phẩm chuyên nghiệp:
 
 - ✅ Dark/Light Mode tự động theo hệ thống.
 - ✅ Animation mềm mại (fade-in, slide-up, loading).
