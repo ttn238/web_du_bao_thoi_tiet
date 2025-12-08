@@ -91,7 +91,7 @@ const cities = [
     "Bắc Ninh",
     "An Giang",
     "Bến Tre",
-    "Cà Mau
+    "Cà Mau"
 ];
 
 function renderCities() {
@@ -309,8 +309,10 @@ function fetchAndUpdateWeather(city) {
 }
 
 // =========================
-//  TÍNH TOÁN VÀ HIỂN THỊ AQI
-//  Chuyển AQI số → mức độ
+// 🎋 TÍNH TOÁN VÀ HIỂN THỊ AQI
+// =========================
+
+// 🔹 Chuyển AQI số → mức độ
 function getAqiStatus(aqi) {
   switch (aqi) {
     case 1: return "Tốt";
@@ -321,7 +323,8 @@ function getAqiStatus(aqi) {
     default: return "Không xác định";
   }
 }
-//  Hàm gọi API AQI từ OpenWeatherMap
+
+// 🔹 Hàm gọi API AQI từ OpenWeatherMap
 function fetchAQI(lat, lon) {
   const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
 
@@ -568,3 +571,4 @@ locateBtn.addEventListener("click", () => {
     resetSearch();
   }
 });
+
