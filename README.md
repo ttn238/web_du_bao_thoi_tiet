@@ -92,7 +92,7 @@ const API_KEY = 'YOUR_API_KEY_HERE';
 
 ## 👥 Contributors
 
-- **BaoGiaHuynh** - Huỳnh Gia Bảo
-- **quangchi997** - Lê Quang Chí
-- **NguyenNgocNga56** - Nguyễn Ngọc Ngà
-- **ttn238** - Trần Thảo Nương
+- **BaoGiaHuynh** - Huỳnh Gia Bảo - 6551071007
+- **quangchi997** - Lê Quang Chí - 6551071010
+- **NguyenNgocNga56** - Nguyễn Ngọc Ngà - 6551071056
+- **ttn238** - Trần Thảo Nương - 6551071060
