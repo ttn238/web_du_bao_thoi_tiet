@@ -1,3 +1,4 @@
+
 :root {
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-dark: rgba(0, 0, 0, 0.45);
@@ -407,4 +408,22 @@ footer {
   .temp {
     font-size: 42px;
   }
+}
+
+/* =========================================
+   NỔI BẬT DÒNG "Hoàn tất lúc 17:58:51"
+   ========================================= */
+.last-action {
+    color: #ffe27a !important;      /* vàng sáng nổi bật */
+    font-weight: 600;
+    text-shadow: 0 0 6px rgba(255, 226, 122, 0.65);
+}
+
+/* =========================================
+   NỔI BẬT DÒNG "© 2025 — Thời tiết VN"
+   ========================================= */
+footer {
+    color: #e8e8e8 !important;      /* xám sáng, không chìm */
+    font-weight: 600;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.45);
 }
