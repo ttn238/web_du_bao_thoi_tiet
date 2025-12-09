@@ -483,7 +483,50 @@ $(document).ready(function () {
     $("#lastAction").text(
       "Đơn vị nhiệt độ đã chuyển sang " + (isCelsius ? "°C" : "°F")
     );
+    applyTemperatureUnit();
   });
+
+
+  // =============================
+// 🔥 CHUYỂN ĐỔI °C ↔ °F (BẢN ĐÃ SỬA)
+// =============================
+
+// Hàm chuyển đổi
+function convertCtoF(c) { return (c * 9/5) + 32; }
+function convertFtoC(f) { return (f - 32) * 5/9; }
+
+// Hàm tách số nhiệt độ từ chuỗi (đã fix lỗi NaN)
+function extractNumber(text) {
+    return parseInt(text.replace(/\D+/g, "")); // ⚡ LẤY SỐ CHÍNH XÁC
+}
+
+// Cập nhật giao diện khi đổi đơn vị
+function applyTemperatureUnit() {
+    const tempEl = document.getElementById("temp");
+    const feelsEl = document.getElementById("feels");
+
+    if (!tempEl || !feelsEl) return;
+
+    // ⚡ LẤY SỐ ĐÚNG CÁCH – KHÔNG BAO GIỜ NaN
+    let temp = extractNumber(tempEl.textContent);
+    let feels = extractNumber(feelsEl.textContent);
+
+    if (!isCelsius) {
+        // → Đổi sang °F
+        temp = Math.round(convertCtoF(temp));
+        feels = Math.round(convertCtoF(feels));
+
+        tempEl.textContent = `Nhiệt độ thực tế: ${temp}°F`;
+        feelsEl.textContent = feelsEl.textContent.replace(/\(.+\)/, `(${feels}°F)`);
+    } else {
+        // → Đổi sang °C
+        temp = Math.round(convertFtoC(temp));
+        feels = Math.round(convertFtoC(feels));
+
+        tempEl.textContent = `Nhiệt độ thực tế: ${temp}°C`;
+        feelsEl.textContent = feelsEl.textContent.replace(/\(.+\)/, `(${feels}°C)`);
+    }
+}
 
 
 
@@ -571,4 +614,3 @@ locateBtn.addEventListener("click", () => {
     resetSearch();
   }
 });
-
