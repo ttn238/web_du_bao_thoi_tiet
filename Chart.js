@@ -67,6 +67,9 @@ function renderTemperatureChart(dailyData) {
           callbacks: {
             label: (ctx) => `${ctx.dataset.label}: ${ctx.raw}°C`,
           },
+          backgroundColor: "rgba(0,0,0,0.75)",
+          titleColor: "#ffffff",
+          bodyColor: "#ffffff"
         },
         legend: {
           display: false, // ❌ tắt hoàn toàn legend
@@ -75,11 +78,13 @@ function renderTemperatureChart(dailyData) {
       },
       scales: {
         y: {
-          ticks: { font: { size: 13 } },
+          ticks: { font: { size: 13 }, color: "#ffffff" },
           beginAtZero: false,
+          grid: { color: "rgba(255,255,255,0.18)" }
         },
         x: {
-          ticks: { font: { size: 13 } },
+          ticks: { font: { size: 13 }, color: "#ffffff" },
+          grid: { color: "rgba(255,255,255,0.10)" }
         },
       },
     },
@@ -95,7 +100,7 @@ function renderTemperatureChart(dailyData) {
 function renderForecastChart(forecastData) {
   if (!forecastData || !forecastData.list) return;
 
-// Nhóm các mục dự báo theo ngày (YYYY-MM-DD) và tính min/max thực tế cho từng ngày
+  // Nhóm các mục dự báo theo ngày (YYYY-MM-DD) và tính min/max thực tế cho từng ngày
   const groups = {};
   forecastData.list.forEach((item) => {
     const d = new Date(item.dt * 1000);
